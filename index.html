@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kalkulator figur</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #e6ddc5;
+    text-align: center;
+}
+
+h1 {
+    color: darkred;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.box {
+    background: #e6dc85;
+    padding: 20px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 8px gray;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Strona do obliczania pól i obwodów figur geometrycznych</h1>
+
+<div class="container">
+
+    <!-- Prostokąt -->
+    <div class="box">
+        <h2>Prostokąt</h2>
+        <input type="number" id="rectA" placeholder="Bok a">
+        <input type="number" id="rectB" placeholder="Bok b">
+        <button onclick="rectangle()">Oblicz</button>
+        <div class="result" id="rectResult"></div>
+    </div>
+
+    <!-- Trójkąt -->
+    <div class="box">
+        <h2>Trójkąt</h2>
+        <input type="number" id="triA" placeholder="Podstawa a">
+        <input type="number" id="triH" placeholder="Wysokość h">
+        <button onclick="triangle()">Oblicz</button>
+        <div class="result" id="triResult"></div>
+    </div>
+
+    <!-- Trapez -->
+    <div class="box">
+        <h2>Trapez</h2>
+        <input type="number" id="trapA" placeholder="Podstawa a">
+        <input type="number" id="trapB" placeholder="Podstawa b">
+        <input type="number" id="trapH" placeholder="Wysokość h">
+        <button onclick="trapezoid()">Oblicz</button>
+        <div class="result" id="trapResult"></div>
+    </div>
+
+    <!-- Okrąg -->
+    <div class="box">
+        <h2>Okrąg</h2>
+        <input type="number" id="circleR" placeholder="Promień r">
+        <button onclick="circle()">Oblicz</button>
+        <div class="result" id="circleResult"></div>
+    </div>
+
+</div>
+
+<script>
+
+function rectangle() {
+    let a = parseFloat(document.getElementById("rectA").value);
+    let b = parseFloat(document.getElementById("rectB").value);
+
+    let area = a * b;
+    let perimeter = 2 * (a + b);
+
+    document.getElementById("rectResult").innerHTML =
+        "Pole: " + area + "<br>Obwód: " + perimeter;
+}
+
+function triangle() {
+    let a = parseFloat(document.getElementById("triA").value);
+    let h = parseFloat(document.getElementById("triH").value);
+
+    let area = (a * h) / 2;
+
+    document.getElementById("triResult").innerHTML =
+        "Pole: " + area + "<br>Obwód: potrzebne 3 boki";
+}
+
+function trapezoid() {
+    let a = parseFloat(document.getElementById("trapA").value);
+    let b = parseFloat(document.getElementById("trapB").value);
+    let h = parseFloat(document.getElementById("trapH").value);
+
+    let area = ((a + b) * h) / 2;
+
+    document.getElementById("trapResult").innerHTML =
+        "Pole: " + area + "<br>Obwód: potrzebne 4 boki";
+}
+
+function circle() {
+    let r = parseFloat(document.getElementById("circleR").value);
+
+    let area = Math.PI * r * r;
+    let perimeter = 2 * Math.PI * r;
+
+    document.getElementById("circleResult").innerHTML =
+        "Pole: " + area.toFixed(2) +
+        "<br>Obwód: " + perimeter.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
